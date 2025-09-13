@@ -1,0 +1,36 @@
+{
+  "kernel_allowlist": [
+    "/usr/bin/ls",
+    "/usr/bin/cat",
+    "/usr/bin/grep",
+    "/usr/bin/whoami",
+    "/usr/bin/id",
+    "/usr/bin/uname"
+  ],
+  "allowlist": [
+    {
+      "comment": "Allow bash shells spawned by the SSH daemon for interactive sessions.",
+      "filename": "/usr/bin/bash",
+      "ppcmdline": "*sshd*"
+    }
+  ],
+  "blocklist": [
+    {
+      "comment": "Block ncat completely.",
+      "filename": "/usr/bin/ncat"
+    },
+    {
+      "comment": "Block any process if its command line contains 'evil_script'.",
+      "cmdline": "*evil_script*"
+    },
+    {
+      "comment": "Block a specific malicious file by its hash (this is the hash of an empty file).",
+      "filehash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "comment": "Block a script started by python3.",
+      "ppcmdline": "*python3*",
+      "cmdline": "*malicious_child*"
+    }
+  ]
+}
